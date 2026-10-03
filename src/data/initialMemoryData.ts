@@ -1,0 +1,268 @@
+import { MemoryEntry, DevelopmentDecision } from '../types';
+
+export const INITIAL_MEMORIES: MemoryEntry[] = [
+  // EMBERVALE: RIFT TAMERS (proj-embervale)
+  {
+    id: 'mem-1',
+    projectId: 'proj-embervale',
+    category: 'GAME_VISION',
+    title: 'Core Pillar & Game Fantasy',
+    content:
+      'Embervale: Rift Tamers is a third-person creature-taming action RPG. Players explore a fractured fantasy landscape scarred by elemental rifts, taming wild elemental beasts (Aetherians) through dynamic, real-time kinetic combat rather than turn-based menus.',
+    tags: ['Vision', 'Pillar', 'RPG'],
+    authorAgent: 'Game Architect',
+    updatedAt: '2026-09-18',
+    version: 1,
+  },
+  {
+    id: 'mem-2',
+    projectId: 'proj-embervale',
+    category: 'TECHNICAL_ARCHITECTURE',
+    title: 'Engine & Scene Composition Pattern',
+    content:
+      'Built in Godot 4.3 with a decoupled component-based node tree. Character bodies run on KinematicBody3D/CharacterBody3D with state machines isolated from rendering meshes. Physics tick runs at fixed 60Hz. Network state serialization uses lightweight flat buffers.',
+    tags: ['Godot', 'Architecture', 'Nodes'],
+    authorAgent: 'Game Architect',
+    updatedAt: '2026-09-18',
+    version: 2,
+  },
+  {
+    id: 'mem-3',
+    projectId: 'proj-embervale',
+    category: 'GAME_DESIGN',
+    title: 'Elemental Affinity Triad',
+    content:
+      'Creatures follow a 5-element kinetic affinity cycle: Pyre (Fire) beats Flora (Wood), Flora beats Tide (Water), Tide beats Pyre. Aether (Light) and Umbra (Shadow) deal reciprocal high-risk damage multipliers.',
+    tags: ['Design', 'Elements', 'Combat'],
+    authorAgent: 'Game Designer',
+    updatedAt: '2026-09-17',
+    version: 1,
+  },
+  {
+    id: 'mem-4',
+    projectId: 'proj-embervale',
+    category: 'GAMEPLAY_SYSTEMS',
+    title: 'Creature Capture Tether Mechanics',
+    content:
+      'Creatures are not held in spheres; instead, players deploy "Rift Anchors" that cast magnetic stasis lattices when the target creature health dips below 25% or when afflicted by Stun status. Capture probability scales with tether tension and player alignment.',
+    tags: ['Capture', 'Mechanics', 'Aetherians'],
+    authorAgent: 'Gameplay Agent',
+    updatedAt: '2026-09-19',
+    version: 1,
+  },
+  {
+    id: 'mem-5',
+    projectId: 'proj-embervale',
+    category: 'CHARACTERS',
+    title: 'Protagonist: The Rift Seeker',
+    content:
+      'Customizable explorer armed with an ancient Gauntlet capable of manipulating spatial gravity and channeling allied creature resonance skills.',
+    tags: ['Player', 'Protagonist', 'Gauntlet'],
+    authorAgent: 'Game Designer',
+    updatedAt: '2026-09-16',
+    version: 1,
+  },
+  {
+    id: 'mem-6',
+    projectId: 'proj-embervale',
+    category: 'CREATURES',
+    title: 'Pyrolupus (Ember Hound)',
+    content:
+      'Tier 1 Pyre canine. Agile pack predator known for ignition dash attacks and heat trail zoning. Weak against Tide attacks. Roams Route 1 volcanic outcrops.',
+    tags: ['Creature', 'Pyrolupus', 'Fire'],
+    authorAgent: 'Asset Agent',
+    updatedAt: '2026-09-18',
+    version: 1,
+  },
+  {
+    id: 'mem-7',
+    projectId: 'proj-embervale',
+    category: 'WORLD',
+    title: 'Route 1: Sunken Meadow Biome',
+    content:
+      'Lush green lowlands intersected by shattered crystalline fissures. Features volumetric light shafts, cascading river tributaries, and roaming low-level herbivorous beasts.',
+    tags: ['World', 'Route 1', 'Meadow'],
+    authorAgent: 'World Builder',
+    updatedAt: '2026-09-18',
+    version: 1,
+  },
+  {
+    id: 'mem-8',
+    projectId: 'proj-embervale',
+    category: 'LEVELS',
+    title: 'Sector 01: The Fractured Gate',
+    content:
+      'Introductory tutorial zone and sanctuary outpost. Safe hub providing repair stations, creature pens, and quest transmission relays.',
+    tags: ['Level', 'Tutorial', 'Sanctuary'],
+    authorAgent: 'World Builder',
+    updatedAt: '2026-09-15',
+    version: 1,
+  },
+  {
+    id: 'mem-9',
+    projectId: 'proj-embervale',
+    category: 'QUESTS',
+    title: 'Main Quest: The First Flare',
+    content:
+      'Investigate the sudden resurgence of dormant rifts outside the sanctuary and tame your first companion creature before the night storm sets in.',
+    tags: ['Quest', 'Campaign', 'Narrative'],
+    authorAgent: 'Game Designer',
+    updatedAt: '2026-09-17',
+    version: 1,
+  },
+  {
+    id: 'mem-10',
+    projectId: 'proj-embervale',
+    category: 'ITEMS',
+    title: 'Rift Tether Cores & Resonance Prisms',
+    content:
+      'Consumable capture catalysts crafted from crystallized rift minerals. Higher grade prisms reduce tether rupture chance during high-tier encounters.',
+    tags: ['Items', 'Economy', 'Crafting'],
+    authorAgent: 'Game Designer',
+    updatedAt: '2026-09-16',
+    version: 1,
+  },
+  {
+    id: 'mem-11',
+    projectId: 'proj-embervale',
+    category: 'COMBAT',
+    title: 'Real-time 3D Action Combat with Dodge Roll i-Frames',
+    content:
+      'Combines dynamic target locking, 12-frame invulnerability dodge roll, light/heavy attack chains, and tactical creature hot-swap triggers during mid-combo combos.',
+    tags: ['Combat', 'Real-Time', 'Action'],
+    authorAgent: 'Gameplay Agent',
+    updatedAt: '2026-09-18',
+    version: 2,
+  },
+  {
+    id: 'mem-12',
+    projectId: 'proj-embervale',
+    category: 'UI',
+    title: 'Radial Interaction Wheel & Cross-Platform HUD',
+    content:
+      'Minimalist HUD with curved player health/stamina arc in the lower-left. For touchscreens, includes a dual virtual stick and pressure-sensitive gesture button.',
+    tags: ['UI', 'HUD', 'Mobile'],
+    authorAgent: 'UI/UX Agent',
+    updatedAt: '2026-09-18',
+    version: 1,
+  },
+  {
+    id: 'mem-13',
+    projectId: 'proj-embervale',
+    category: 'AUDIO',
+    title: 'Adaptive Biome Synthesizer & Creature SFX',
+    content:
+      'Dynamic layer mixing transitions seamlessly between atmospheric ambient strings during exploration and rhythmic percussion during active combat encounters.',
+    tags: ['Audio', 'Music', 'SFX'],
+    authorAgent: 'Asset Agent',
+    updatedAt: '2026-09-16',
+    version: 1,
+  },
+  {
+    id: 'mem-14',
+    projectId: 'proj-embervale',
+    category: 'ASSETS',
+    title: 'Low-Poly PBR Mesh Pool Specs',
+    content:
+      'All creature models must stay under 4,500 polygons for LOD0 and under 1,200 for LOD1. Textures limited to 2048x2048 atlases with roughness-metallic packed channels.',
+    tags: ['Assets', '3D', 'LOD'],
+    authorAgent: 'Asset Agent',
+    updatedAt: '2026-09-17',
+    version: 1,
+  },
+  {
+    id: 'mem-15',
+    projectId: 'proj-embervale',
+    category: 'CURRENT_DEVELOPMENT_STATUS',
+    title: 'Phase 4: Core Gameplay Sprint in Progress',
+    content:
+      'Player controller 80% implemented. Kinematics and camera collision working. Active work focused on finishing creature capture tether mechanics and Route 1 terrain setup.',
+    tags: ['Status', 'Sprint', 'Current'],
+    authorAgent: 'Game Architect',
+    updatedAt: '2026-09-19',
+    version: 3,
+  },
+  {
+    id: 'mem-16',
+    projectId: 'proj-embervale',
+    category: 'KNOWN_BUGS',
+    title: 'Physics tunneling on high-velocity dodge roll down steep slopes',
+    content:
+      'When player executes a dodge roll down terrain angles greater than 45 degrees, raycast occasionally misses terrain collision layer. Patch planned for sprint 3.',
+    tags: ['Bug', 'Physics', 'Collision'],
+    authorAgent: 'Debug Agent',
+    updatedAt: '2026-09-18',
+    version: 1,
+  },
+  {
+    id: 'mem-17',
+    projectId: 'proj-embervale',
+    category: 'IMPORTANT_CONSTRAINTS',
+    title: 'Mobile Performance Envelope (60 FPS on Snapdragon 7+)',
+    content:
+      'Strict draw call budget of max 120 calls per frame. Triangle count capped at 180,000 visible triangles. Memory footprint under 1.2 GB RAM.',
+    tags: ['Constraints', 'Mobile', 'FPS'],
+    authorAgent: 'Optimization Agent',
+    updatedAt: '2026-09-17',
+    version: 1,
+  },
+  {
+    id: 'mem-18',
+    projectId: 'proj-embervale',
+    category: 'FUTURE_FEATURES',
+    title: 'Co-op Rift Raids & Mount System',
+    content:
+      'Post-alpha roadmap: 2-4 player synchronized co-op rift dungeons and creature mounting for high-speed terrain traversal and gliding.',
+    tags: ['Roadmap', 'Co-op', 'Multiplayer'],
+    authorAgent: 'Game Architect',
+    updatedAt: '2026-09-15',
+    version: 1,
+  },
+];
+
+export const INITIAL_DECISIONS: DevelopmentDecision[] = [
+  {
+    id: 'dec-1',
+    projectId: 'proj-embervale',
+    title: 'Combat system uses real-time 3D combat instead of turn-based menus',
+    reason:
+      'Designed for fast, mobile-friendly action gameplay and satisfying physical feedback, maximizing engagement on modern touchscreens and controllers.',
+    createdBy: 'Game Architect',
+    date: '2026-08-14',
+    status: 'ACTIVE',
+    category: 'Combat & Core Loop',
+  },
+  {
+    id: 'dec-2',
+    projectId: 'proj-embervale',
+    title: 'Adopt Godot 4.3 as target engine with GDScript and GDExtension',
+    reason:
+      'Godot 4.3 provides lightweight export runtimes for both PC and Android without heavy bloat or licensing friction, along with excellent custom shader control.',
+    createdBy: 'Game Architect',
+    date: '2026-08-15',
+    status: 'ACTIVE',
+    category: 'Technical Architecture',
+  },
+  {
+    id: 'dec-3',
+    projectId: 'proj-embervale',
+    title: 'Creature capture via dynamic stasis tethers rather than thrown balls',
+    reason:
+      'Differentiates Embervale from classic monster catchers and integrates directly into the real-time stamina and combo system.',
+    createdBy: 'Game Designer',
+    date: '2026-08-20',
+    status: 'ACTIVE',
+    category: 'Gameplay Systems',
+  },
+  {
+    id: 'dec-4',
+    projectId: 'proj-embervale',
+    title: 'Strict mobile draw-call budget capped at 120 calls per frame',
+    reason:
+      'Prevents thermal throttling on mid-range Android devices during prolonged open-world roaming sessions.',
+    createdBy: 'Optimization Agent',
+    date: '2026-08-25',
+    status: 'ACTIVE',
+    category: 'Performance',
+  },
+];
