@@ -52,6 +52,7 @@ export class TaskService {
       description: string;
       priority?: TaskPriority;
       assignedAgentId?: string;
+      category?: string;
       dependencies?: string[];
       status?: TaskStatus;
       tags?: string[];
@@ -67,6 +68,7 @@ export class TaskService {
       priority: data.priority || 'MEDIUM',
       assignedAgentId: data.assignedAgentId || 'agent-architect',
       agentId: data.assignedAgentId || 'agent-architect',
+      category: data.category,
       createdBy: actorName,
       progress: 0,
       dependencies: data.dependencies || [],

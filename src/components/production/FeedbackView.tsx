@@ -36,21 +36,23 @@ export const FeedbackView: React.FC = () => {
     setClusters(cl);
   };
 
-  const handleSendClusterToPhase9 = (cluster: ThematicCluster) => {
-    const task = taskService.createTask({
+  const handleSendClusterToPhase9 = async (cluster: ThematicCluster) => {
+    const quotes = cluster.quotes || cluster.sampleQuotes || [];
+    const affected = cluster.affectedSystems?.join(', ') || cluster.category;
+    const task = await taskService.createTask({
       projectId: currentProject.id,
       title: `[Player Feedback] ${cluster.theme}`,
-      description: `Player Feedback Theme (${cluster.category}): ${cluster.theme}\n\nEvidence (${cluster.count} reports):\n${cluster.quotes.map((q) => `• "${q}"`).join('\n')}\n\nAffected Systems: ${cluster.affectedSystems.join(', ')}`,
+      description: `Player Feedback Theme (${cluster.category}): ${cluster.theme}\n\nEvidence (${cluster.count} reports):\n${quotes.map((q: string) => `• "${q}"`).join('\n')}\n\nAffected Systems: ${affected}`,
       category: cluster.category === 'Bugs' ? 'Bugfix' : cluster.category === 'Performance' ? 'Optimization' : 'Feature',
-      priority: cluster.count >= 10 ? 'P1 - High' : 'P2 - Normal',
+      priority: cluster.count >= 10 ? 'HIGH' : 'MEDIUM',
       tags: ['player-feedback', 'phase-9-loop', cluster.category.toLowerCase()],
     });
 
-    autonomousDevelopmentService.addImprovementTask(currentProject.id, {
+    await autonomousDevelopmentService.addImprovementTask(currentProject.id, {
       type: cluster.category === 'Bugs' ? 'BUG_FIX' : cluster.category === 'Performance' ? 'OPTIMIZATION' : 'UX',
       title: cluster.theme,
       description: `Theme identified across ${cluster.count} feedback tickets.`,
-      evidence: cluster.quotes.join('; '),
+      evidence: quotes.join('; '),
       priority: 'HIGH',
       suggestedAgent: 'agent-design-01',
     });
@@ -114,7 +116,7 @@ export const FeedbackView: React.FC = () => {
                   <h4 className="font-bold text-sm text-white mt-2 leading-snug">{cluster.theme}</h4>
 
                   <div className="mt-2 space-y-1">
-                    {cluster.quotes.slice(0, 2).map((quote, idx) => (
+                    {(cluster.quotes || cluster.sampleQuotes || []).slice(0, 2).map((quote: string, idx: number) => (
                       <p key={idx} className="text-[11px] text-slate-400 italic">
                         "{quote}"
                       </p>

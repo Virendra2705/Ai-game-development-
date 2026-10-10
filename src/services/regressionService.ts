@@ -84,6 +84,10 @@ class RegressionService {
     return this.regressionTests.get(projectId) || [];
   }
 
+  getRegressionTestsSync(projectId: string): RegressionTest[] {
+    return this.regressionTests.get(projectId) || [];
+  }
+
   async addRegressionTest(test: Omit<RegressionTest, 'id'>): Promise<RegressionTest> {
     const newTest: RegressionTest = {
       ...test,

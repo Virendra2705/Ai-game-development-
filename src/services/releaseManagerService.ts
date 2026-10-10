@@ -149,7 +149,7 @@ export class ReleaseManagerService {
   }
 
   evaluateReadiness(projectId: string, platformTested: boolean = true): ReleaseReadinessReport {
-    const tests = regressionService.getRegressionTests(projectId);
+    const tests = regressionService.getRegressionTestsSync(projectId);
     const criticalTests = tests.filter((t) => t.category === 'GAMEPLAY' || t.name.toLowerCase().includes('critical'));
     const failedCriticalTests = criticalTests.filter((t) => t.status === 'FAIL').length;
     const criticalQAFailed = failedCriticalTests > 0;

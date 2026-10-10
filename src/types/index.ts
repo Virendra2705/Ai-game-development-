@@ -1846,7 +1846,7 @@ export interface ImprovementTask {
   priority: 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL';
   status: 'PROPOSED' | 'APPROVED' | 'IN_PROGRESS' | 'COMPLETED' | 'REJECTED';
   source: string;
-  suggestedAgent: string;
+  suggestedAgent?: string;
   createdAt: string;
 }
 
@@ -2015,6 +2015,7 @@ export interface CrashReport {
   timestamp: string;
   frequency: number;
   affectedUsers?: number;
+  deviceInfo?: string;
   source: 'Runtime Client' | 'QA Sandbox' | 'Server Logs' | 'Crashlytics Test';
   status: 'NEW' | 'ANALYZING' | 'KNOWN' | 'FIXING' | 'RESOLVED' | 'IGNORED';
   relatedIssueId?: string;
@@ -2076,8 +2077,13 @@ export interface FeedbackCluster {
   count: number;
   sentimentDistribution: { positive: number; neutral: number; negative: number };
   sampleQuotes: string[];
+  quotes?: string[];
+  affectedSystems?: string[];
+  sentiment?: string;
   suggestedAction?: string;
 }
+
+export type ThematicCluster = FeedbackCluster;
 
 export interface PostReleaseImprovementPlan {
   id: string;

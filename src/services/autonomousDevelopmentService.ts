@@ -551,6 +551,30 @@ class AutonomousDevelopmentService {
   async getRunReport(runId: string): Promise<AutonomousRunReport | null> {
     return this.reports.get(runId) || null;
   }
+
+  async addImprovementTask(
+    projectId: string,
+    task: {
+      type: 'BUG_FIX' | 'OPTIMIZATION' | 'UX' | 'REFACTOR';
+      title: string;
+      description: string;
+      evidence: string;
+      priority?: 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL';
+      suggestedAgent?: string;
+    }
+  ) {
+    return improvementAgentService.proposeImprovement({
+      projectId,
+      type: task.type,
+      title: task.title,
+      description: task.description,
+      evidence: task.evidence,
+      priority: task.priority || 'MEDIUM',
+      status: 'APPROVED',
+      source: 'Autonomous Feedback Pipeline',
+      suggestedAgent: task.suggestedAgent || 'Lead Game Designer',
+    });
+  }
 }
 
 export const autonomousDevelopmentService = new AutonomousDevelopmentService();

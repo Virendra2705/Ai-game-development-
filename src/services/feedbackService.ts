@@ -153,6 +153,19 @@ export class FeedbackService {
         count: items.length,
         sentimentDistribution: { positive, neutral, negative },
         sampleQuotes: items.slice(0, 3).map((it) => `"${it.message}" (${it.source}, v${it.version})`),
+        quotes: items.slice(0, 3).map((it) => it.message),
+        affectedSystems: [
+          category === 'Bugs'
+            ? 'Combat & Kinetic Net'
+            : category === 'Controls'
+            ? 'Touch Input Adapter'
+            : category === 'Performance'
+            ? 'Vulkan Rendering Shaders'
+            : category === 'Difficulty'
+            ? 'Sparkit AI Wind-up Timer'
+            : 'Core Systems',
+        ],
+        sentiment: negative > positive ? 'Mostly Negative' : positive > negative ? 'Mostly Positive' : 'Neutral',
         suggestedAction,
       });
     });
